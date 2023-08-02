@@ -39,6 +39,7 @@ class CommonStyle {
     fontFamily: gamja,
     primaryColor: subGray,
     scaffoldBackgroundColor: subGray,
+    textTheme: const TextTheme(bodyMedium: bodyFont),
   );
 
   static ButtonStyle basicBtn = ButtonStyle(
