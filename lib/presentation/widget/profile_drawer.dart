@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
 import '../../core/core.dart';
-import 'widget.dart';
+import 'drawer_components.dart';
 
 class ProfileDrawer extends StatelessWidget {
   const ProfileDrawer({super.key});

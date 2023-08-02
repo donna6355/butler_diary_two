@@ -12,9 +12,9 @@ class NoCat extends StatelessWidget {
       child: Column(
         children: [
           Padding(
-              padding: const EdgeInsets.symmetric(vertical: 20),
-              child: Center(
-                  child: Image.asset(Img.noCat, width: 150))), // need to change
+            padding: const EdgeInsets.symmetric(vertical: 20),
+            child: Center(child: Image.asset(Img.noCat, width: 150)),
+          ), // need to change
           const Text(Lang.noCat, textAlign: TextAlign.center),
         ],
       ),
@@ -25,6 +25,7 @@ class NoCat extends StatelessWidget {
 class ProfileCard extends StatelessWidget {
   const ProfileCard(this.profile, {super.key});
   final Profile profile;
+
   Future<void> _removeProfile({
     required BuildContext context,
     required Profile profile,
