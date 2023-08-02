@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../widget/widget.dart';
 import '../../core/core.dart';
 
 class LivingRoom extends StatelessWidget {
@@ -7,7 +8,7 @@ class LivingRoom extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: Drawer(),
+      drawer: const ProfileDrawer(),
       appBar: AppBar(
         elevation: 0,
         title: const Text(Lang.butlerDiary),

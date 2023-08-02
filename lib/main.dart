@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 
 import 'core/core.dart';
+import 'data/hive_storage.dart';
 import 'presentation/screen/screen.dart';
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await initHive();
   runApp(const MyApp());
 }
 

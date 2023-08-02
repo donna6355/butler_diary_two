@@ -7,3 +7,13 @@ class NamedRoutes {
   static const String profile = '/profile';
   static const String profileEdit = '/profile_edit';
 }
+
+class Constants {
+  Constants._();
+  static const String profile = 'myCats';
+}
+
+class Img {
+  Img._();
+  static const String noCat = 'assets/img/drawer.png';
+}
