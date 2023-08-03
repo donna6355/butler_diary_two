@@ -18,6 +18,21 @@ class CommonStyle {
     fontSize: 16,
   );
 
+  static const TextStyle labelFont = TextStyle(
+    fontSize: 18,
+    fontWeight: FontWeight.w500,
+  );
+
+  static InputDecoration underlineInput(String hint) {
+    return InputDecoration(
+      hintText: hint,
+      counterText: '',
+      focusedBorder: const UnderlineInputBorder(
+        borderSide: BorderSide(color: CommonStyle.primaryGray, width: 2.0),
+      ),
+    );
+  }
+
   static ThemeData theme = ThemeData(
     appBarTheme: AppBarTheme(
       color: subGray,
@@ -33,6 +48,8 @@ class CommonStyle {
     ),
     textButtonTheme: TextButtonThemeData(
       style: ButtonStyle(
+        overlayColor:
+            MaterialStateProperty.all<Color>(primaryGray.withOpacity(0.3)),
         foregroundColor: MaterialStateProperty.all<Color>(primaryGray),
       ),
     ),
@@ -40,6 +57,7 @@ class CommonStyle {
     primaryColor: subGray,
     scaffoldBackgroundColor: subGray,
     textTheme: const TextTheme(bodyMedium: bodyFont),
+    iconTheme: const IconThemeData(color: primaryGray),
   );
 
   static ButtonStyle basicBtn = ButtonStyle(
