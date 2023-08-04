@@ -6,7 +6,7 @@ import 'presentation/screen/screen.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await initHive();
+  await HiveStore.initHive();
   runApp(const MyApp());
 }
 

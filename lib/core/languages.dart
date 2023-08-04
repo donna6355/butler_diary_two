@@ -21,6 +21,7 @@ class Lang {
   static const female = '여자아이';
   static const birth = '* 생일';
   static const birthEx = 'XXXX년 XX월 XX일';
+  static const pickBirth = '주인님 생일 선택';
   static const weight = '몸무게';
   static const weightEx = 'ex) 5.1';
   static const kg = 'kg';
@@ -28,6 +29,10 @@ class Lang {
   static const remarkEx = 'ex) 땅콩 털림';
   static const fillRequired = '* 필수 항목을 작성해주세요.';
   static const save = '저장하기';
+  static const nameAlert = '이름을 작성해 주세요!';
+  static const dupNameAlert = '도플갱어냥?? 이미 모시고 있는 주인님이다옹!';
+  static const genderAlert = '성별을 선택해 주세요!';
+  static const birthAlert = '생일을 선택해 주세요!';
 
   static const devMsg = '개발자 메시지';
 }
