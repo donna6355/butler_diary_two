@@ -5,6 +5,7 @@ class CommonStyle {
   CommonStyle._();
 
   static const Color primaryGray = Color(0xff454442);
+  static const Color secondGray = Color(0xff95948D);
   static const Color subGray = Color(0xffE5E4DB);
   static final String? gamja = GoogleFonts.gamjaFlower().fontFamily;
 

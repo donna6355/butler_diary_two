@@ -68,14 +68,36 @@ class TypeButton extends StatelessWidget {
 }
 
 class ProfileLabel extends StatelessWidget {
-  const ProfileLabel(this.label, {super.key});
+  const ProfileLabel(this.label, {this.required = false, super.key});
   final String label;
+  final bool required;
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
       width: 60,
-      child: Text(label, style: CommonStyle.labelFont),
+      child: Text('${required ? Lang.required : ''}$label',
+          style: CommonStyle.labelFont),
+    );
+  }
+}
+
+class ProfileLabelVal extends StatelessWidget {
+  const ProfileLabelVal({required this.label, required this.value, super.key});
+  final String label;
+  final String value;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 10),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          ProfileLabel(label, required: false),
+          Text(value, style: CommonStyle.labelFont),
+        ],
+      ),
     );
   }
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../core/core.dart';
+import '../../data/hive_storage.dart';
 import '../../data/model/profile.dart';
 
 class NoCat extends StatelessWidget {
@@ -44,20 +45,15 @@ class ProfileCard extends StatelessWidget {
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          TextButton(
-            onPressed: () {
-              // Navigator.of(context).popAndPushNamed(
-              //   '/profile',
-              //   arguments: profile,
-              // );
+          GestureDetector(
+            onTap: () {
+              Navigator.of(context)
+                  .popAndPushNamed(NamedRoutes.profile, arguments: profile);
             },
-            child: Text(
-              profile.name,
-              style: const TextStyle(fontSize: 20),
-            ),
+            child: Text(profile.name, style: const TextStyle(fontSize: 20)),
           ),
           IconButton(
-            onPressed: () => _removeProfile,
+            onPressed: () => _removeProfile(context: context, profile: profile),
             icon: const Icon(
               Icons.cancel,
               size: 15,
@@ -85,16 +81,11 @@ class DeleteAlert extends StatelessWidget {
           child: const Text(Lang.cancel),
         ),
         TextButton(
-          onPressed: () {
+          onPressed: () async {
             Navigator.of(context).pop();
-            // Hive.deleteBoxFromDisk('diary_${profile.id}');
-            // box.delete(profile.id);
-            // Navigator.pushAndRemoveUntil(
-            //   context,
-            //   MaterialPageRoute<void>(
-            //       builder: (BuildContext context) => LivingRoom()),
-            //   ModalRoute.withName('/'),
-            // );
+            await HiveStore.deleteCatProfile(profile.id);
+            Navigator.of(context)
+                .pushNamedAndRemoveUntil(NamedRoutes.home, (route) => false);
           },
           child: const Text(Lang.confirm),
         ),
