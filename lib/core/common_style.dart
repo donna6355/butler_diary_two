@@ -34,6 +34,8 @@ class CommonStyle {
   }
 
   static ThemeData theme = ThemeData(
+    datePickerTheme:
+        const DatePickerThemeData(headerBackgroundColor: primaryGray),
     appBarTheme: AppBarTheme(
       color: subGray,
       iconTheme: const IconThemeData(color: primaryGray),
@@ -54,7 +56,7 @@ class CommonStyle {
       ),
     ),
     fontFamily: gamja,
-    primaryColor: subGray,
+    primaryColor: primaryGray,
     scaffoldBackgroundColor: subGray,
     textTheme: const TextTheme(bodyMedium: bodyFont),
     iconTheme: const IconThemeData(color: primaryGray),

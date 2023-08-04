@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 import '../../core/core.dart';
 
 class Photo extends StatelessWidget {
-  const Photo({required this.isPhone, required this.photo, super.key});
-  final bool isPhone;
+  const Photo({required this.photo, super.key});
   final String photo;
   @override
   Widget build(BuildContext context) {
@@ -12,8 +11,8 @@ class Photo extends StatelessWidget {
         borderRadius: BorderRadius.circular(20),
         child: Container(
           color: Colors.white,
-          width: isPhone ? 100 : 160,
-          height: isPhone ? 100 : 160,
+          width: 120,
+          height: 120,
           child: Image.asset('assets/img/${photo}1.png'),
         ),
       ),
