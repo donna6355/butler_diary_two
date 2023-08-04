@@ -18,6 +18,9 @@ class Img {
   static const String noCat = 'assets/img/drawer.png';
   static const String pickMe = 'assets/img/pickme.png';
   static const String devMsg = 'assets/img/msg.png';
+  static const String observe = 'assets/img/adorable.png';
+  static const String iconGrayDone = 'assets/icon/graydone.png';
+  static const String iconDone = 'assets/icon/done.png';
 }
 
 const List<String> commonSense = [
