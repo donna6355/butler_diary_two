@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import '../logic/logic.dart';
 
 extension TimeFormat on DateTime {
-  String calc() {
-    return '$year년 $month월 $day일 ${ageCalc(this)}';
+  String calc({bool twoLine = false}) {
+    return '$year년 $month월 $day일 ${twoLine ? '\n' : ' / '}${ageCalc(this)}';
   }
 }
 
