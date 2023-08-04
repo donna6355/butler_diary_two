@@ -46,6 +46,7 @@ class LivingRoom extends StatelessWidget {
                   );
                 }),
           ),
+          //TODO add google ad
           // FutureBuilder(
           //   future: myBanner.load(),
           //   builder: (context, snapshot) {

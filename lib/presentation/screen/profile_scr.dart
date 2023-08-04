@@ -79,7 +79,14 @@ class _ProfileScrState extends State<ProfileScr> {
         title: const Text(Lang.profile),
         elevation: 0,
         actions: [
-          TextButton(onPressed: () {}, child: const Text(Lang.diary)),
+          TextButton(
+              onPressed: () {
+                Navigator.of(context).popAndPushNamed(
+                  NamedRoutes.diary,
+                  arguments: master,
+                );
+              },
+              child: const Text(Lang.diary)),
         ],
       ),
       body: GestureDetector(

@@ -10,16 +10,17 @@ class CalendarDate extends ChangeNotifier {
   DateTime get getFocusedDate => _focusedDate;
   CalendarFormat get getFormat => _calendarFormat;
 
-  void moveToPrevDate() {
-    _selectedDate = _selectedDate.subtract(const Duration(days: 1));
-    _focusedDate = _focusedDate.subtract(const Duration(days: 1));
-    notifyListeners();
-  }
-
-  void moveToNextDate() {
-    _selectedDate = _selectedDate.add(const Duration(days: 1));
-    _focusedDate = _focusedDate.add(const Duration(days: 1));
-    notifyListeners();
+  Future<bool> moveDate(DismissDirection dir) {
+    if (dir == DismissDirection.endToStart) {
+      _selectedDate = _selectedDate.add(const Duration(days: 1));
+      _focusedDate = _focusedDate.add(const Duration(days: 1));
+      notifyListeners();
+    } else if (dir == DismissDirection.startToEnd) {
+      _selectedDate = _selectedDate.subtract(const Duration(days: 1));
+      _focusedDate = _focusedDate.subtract(const Duration(days: 1));
+      notifyListeners();
+    }
+    return Future.value(false);
   }
 
   void updateSelectedDate(DateTime focused, DateTime selected) {
@@ -40,5 +41,12 @@ class CalendarDate extends ChangeNotifier {
       _calendarFormat = CalendarFormat.week;
     }
     notifyListeners();
+  }
+
+  bool checkDate(DateTime date) {
+    if (date == _selectedDate) return true;
+    if (date.toString().substring(0, 10) ==
+        _selectedDate.toString().substring(0, 10)) return true;
+    return false;
   }
 }

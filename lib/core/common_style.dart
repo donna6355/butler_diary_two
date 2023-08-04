@@ -23,7 +23,10 @@ class CommonStyle {
     fontSize: 18,
     fontWeight: FontWeight.w500,
   );
-
+  static const TextStyle diaryLabelFont = TextStyle(
+    fontSize: 18,
+    fontWeight: FontWeight.w500,
+  );
   static InputDecoration underlineInput(String hint) {
     return InputDecoration(
       hintText: hint,
