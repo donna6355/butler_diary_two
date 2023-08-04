@@ -128,7 +128,7 @@ class _ProfileEditState extends State<ProfileEdit> {
               Row(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  const ProfileLabel(Lang.name),
+                  const ProfileLabel(Lang.name, required: true),
                   Expanded(
                     child: TextField(
                       cursorColor: CommonStyle.primaryGray,
@@ -144,7 +144,7 @@ class _ProfileEditState extends State<ProfileEdit> {
               Row(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  const ProfileLabel(Lang.gender),
+                  const ProfileLabel(Lang.gender, required: true),
                   RadioBtn(
                     groupVal: _gender,
                     val: 1,
@@ -161,7 +161,7 @@ class _ProfileEditState extends State<ProfileEdit> {
               Row(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  const ProfileLabel(Lang.birth),
+                  const ProfileLabel(Lang.birth, required: true),
                   Text(_birth == null ? Lang.birthEx : _birth!.calc()),
                   IconButton(
                     onPressed: _showCalendar,

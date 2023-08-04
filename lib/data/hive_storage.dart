@@ -26,4 +26,9 @@ class HiveStore {
   static Future saveCatProfile(String id, Profile cat) async {
     await catBox.put(id, cat);
   }
+
+  static Future deleteCatProfile(String id) async {
+    await Hive.deleteBoxFromDisk('diary_$id');
+    await catBox.delete(id);
+  }
 }

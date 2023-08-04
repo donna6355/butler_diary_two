@@ -1,5 +1,7 @@
 class Lang {
   Lang._();
+  static const profile = '프로필';
+  static const diary = '일기';
   static const butlerDiary = '집사일기';
   static const cancel = '취소';
   static const confirm = '확인';
@@ -14,12 +16,13 @@ class Lang {
   static const dynamic = '활발냥';
   static const sleepy = '쿨쿨냥';
   static const weird = '이상냥';
-  static const name = '* 이름';
+  static const required = '* ';
+  static const name = '이름';
   static const nameEx = 'ex) 김미르';
-  static const gender = '* 성별';
+  static const gender = '성별';
   static const male = '남자아이';
   static const female = '여자아이';
-  static const birth = '* 생일';
+  static const birth = '생일';
   static const birthEx = 'XXXX년 XX월 XX일';
   static const pickBirth = '주인님 생일 선택';
   static const weight = '몸무게';
@@ -29,6 +32,7 @@ class Lang {
   static const remarkEx = 'ex) 땅콩 털림';
   static const fillRequired = '* 필수 항목을 작성해주세요.';
   static const save = '저장하기';
+  static const delete = '삭제하기';
   static const nameAlert = '이름을 작성해 주세요!';
   static const dupNameAlert = '도플갱어냥?? 이미 모시고 있는 주인님이다옹!';
   static const genderAlert = '성별을 선택해 주세요!';
