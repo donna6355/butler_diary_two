@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:hive_flutter/hive_flutter.dart';
+import '../../data/model/profile.dart';
 import '../widget/widget.dart';
 import '../../core/core.dart';
 
@@ -20,7 +22,54 @@ class LivingRoom extends StatelessWidget {
           ),
         ],
       ),
-      body: Text('LIVING ROOM'),
+      body: Column(
+        children: [
+          Expanded(
+            child: ValueListenableBuilder<Box>(
+                valueListenable: Hive.box(Constants.profile).listenable(),
+                builder: (context, box, widget) {
+                  if (box.length == 0) return const BeMyButler();
+                  return Stack(
+                    children: [
+                      const Background(),
+                      ListView.builder(
+                          physics: const BouncingScrollPhysics(),
+                          itemCount: box.length,
+                          itemBuilder: (BuildContext ctx, idx) {
+                            final Profile profile = box.getAt(idx);
+                            return CatCard(
+                              profile: profile,
+                              vertical: box.length < 2 ? true : false,
+                            );
+                          }),
+                    ],
+                  );
+                }),
+          ),
+          // FutureBuilder(
+          //   future: myBanner.load(),
+          //   builder: (context, snapshot) {
+          //     if (snapshot.connectionState == ConnectionState.waiting) {
+          //       return CircularProgressIndicator();
+          //     }
+          //     final AdWidget adWidget = AdWidget(ad: myBanner);
+          //     final Container adContainer = Container(
+          //       alignment: Alignment.center,
+          //       child: adWidget,
+          //       width: myBanner.size.width.toDouble(),
+          //       height: myBanner.size.height.toDouble(),
+          //       decoration: BoxDecoration(
+          //         image: DecorationImage(
+          //           image: AssetImage("assets/img/darkad.png"),
+          //           fit: BoxFit.cover,
+          //         ),
+          //       ),
+          //     );
+          //     return adContainer;
+          //   },
+          // ),
+        ],
+      ),
     );
   }
 }

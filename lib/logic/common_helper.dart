@@ -10,5 +10,5 @@ String ageCalc(DateTime birth) {
     months += (days < 0 ? 11 : 12);
   }
 
-  return years > 0 ? ' / $years년 $months개월' : ' / $months개월';
+  return years > 0 ? '$years년 $months개월' : '$months개월';
 }

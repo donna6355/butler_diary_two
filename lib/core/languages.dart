@@ -5,7 +5,11 @@ class Lang {
   static const butlerDiary = '집사일기';
   static const cancel = '취소';
   static const confirm = '확인';
+
   static const obtainCat = '냥줍';
+  static const beMyButler = '너 오늘부터 내 집사해라옹!';
+  static const writeProfile = '주인님 프로필 작성하기';
+
   static const editProfile = '주인님 프로필 수정하기';
   static const noCat = '나만 고양이 없어....\n주인님이 입양이 시급합니다.';
   static const deleteProfile = ' 프로필 지우기';
