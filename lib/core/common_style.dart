@@ -14,6 +14,13 @@ class CommonStyle {
     fontFamily: gamja,
     fontSize: 20,
   );
+  static const TextStyle diaryFont = TextStyle(
+    fontWeight: FontWeight.w500,
+    fontSize: 20,
+  );
+  static const TextStyle diaryIconFont = TextStyle(
+    fontSize: 13,
+  );
   static const TextStyle bodyFont = TextStyle(
     color: primaryGray,
     fontSize: 16,

@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../../core/core.dart';
+import '../../data/model/diary.dart';
 import '../../logic/calendar_date.dart';
+import 'diary_card.dart';
 
 class CalendarNewCard extends StatelessWidget {
   const CalendarNewCard({
@@ -22,9 +24,7 @@ class CalendarNewCard extends StatelessWidget {
       confirmDismiss: (dir) =>
           Provider.of<CalendarDate>(context, listen: false).moveDate(dir),
       child: Container(
-        constraints: const BoxConstraints(
-          minHeight: 400,
-        ),
+        constraints: const BoxConstraints(minHeight: 400),
         width: double.infinity,
         child: Column(
           children: [
@@ -55,10 +55,12 @@ class CalendarDiaryCard extends StatelessWidget {
   const CalendarDiaryCard({
     required this.masterId,
     required this.masterName,
+    required this.dailyData,
     super.key,
   });
   final String masterName;
   final String masterId;
+  final Diary dailyData;
 
   @override
   Widget build(BuildContext context) {
@@ -66,7 +68,11 @@ class CalendarDiaryCard extends StatelessWidget {
       key: UniqueKey(),
       confirmDismiss: (dir) =>
           Provider.of<CalendarDate>(context, listen: false).moveDate(dir),
-      child: Text('DIARY'),
+      child: DiaryCard(
+        dailyData: dailyData,
+        boxKey: masterId,
+        masterName: masterName,
+      ),
     );
   }
 }
