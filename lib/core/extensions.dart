@@ -8,6 +8,10 @@ extension TimeFormat on DateTime {
   String id() {
     return toString().substring(0, 10);
   }
+
+  String title() {
+    return toString().substring(0, 19);
+  }
 }
 
 extension Format on String {

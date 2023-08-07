@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
-import '../../core/core.dart';
 import '../widget/widget.dart';
+import '../../core/core.dart';
+import '../../data/model/diary.dart';
 
 class DiaryEdit extends StatefulWidget {
   const DiaryEdit({super.key});
@@ -42,6 +43,49 @@ class _DiaryEditState extends State<DiaryEdit> {
   List<dynamic> photos = [];
   late Box diaryBox;
   bool dirty = false;
+
+  void _updateInfo(Map<String, dynamic> master) {
+    if (date.isNotEmpty) return;
+    setState(() => date = master['date']);
+
+    diaryBox = Hive.box('diary_${master['key']}');
+    final Diary? dailyData = diaryBox.get(master['date']);
+    if (dailyData == null) {
+      return;
+    } else {
+      setState(() {
+        feel = dailyData.feel;
+        dryFood = dailyData.dryFood;
+        wetFood = dailyData.wetFood;
+        water = dailyData.water;
+        waterySnack = dailyData.waterySnack;
+        drySnack = dailyData.drySnack;
+        otherSnack = dailyData.otherSnack;
+        snack = dailyData.snack;
+        pee = dailyData.pee;
+        poo = dailyData.poo;
+        hairBall = dailyData.hairBall;
+        diarrhea = dailyData.diarrhea;
+        vomit = dailyData.vomit;
+        destroy = dailyData.destroy;
+        vet = dailyData.vet;
+        vaccine = dailyData.vaccine;
+        pill = dailyData.pill;
+        eyeDrop = dailyData.eyeDrop;
+        hunting = dailyData.hunting;
+        brushTeeth = dailyData.brushTeeth;
+        brushFur = dailyData.brushFur;
+        clawCut = dailyData.clawCut;
+        bath = dailyData.bath;
+        toilet = dailyData.toilet;
+        note = dailyData.note;
+        noteCtrl.text = dailyData.note.isNotEmpty ? dailyData.note : '';
+        if (dailyData.photos.isNotEmpty) {
+          photos = dailyData.photos;
+        }
+      });
+    }
+  }
 
   void _togglesetState(String name) {
     setState(() {
@@ -136,10 +180,10 @@ class _DiaryEditState extends State<DiaryEdit> {
     });
   }
 
-  void _addPhoto(newImg) {
+  void _addPhoto(String path) {
     setState(() {
       dirty = true;
-      photos.add(newImg.path);
+      photos.add(path);
     });
   }
 
@@ -150,17 +194,84 @@ class _DiaryEditState extends State<DiaryEdit> {
     });
   }
 
+  void _saveDiary() async {
+    if (!dirty) return;
+    if (feel == -1 &&
+        dryFood == -1 &&
+        wetFood == -1 &&
+        water == -1 &&
+        waterySnack == false &&
+        drySnack == false &&
+        snack == false &&
+        otherSnack == false &&
+        pee == -1 &&
+        poo == -1 &&
+        hairBall == false &&
+        diarrhea == false &&
+        vomit == false &&
+        destroy == false &&
+        vet == false &&
+        vaccine == false &&
+        pill == false &&
+        eyeDrop == false &&
+        hunting == false &&
+        brushTeeth == false &&
+        brushFur == false &&
+        clawCut == false &&
+        bath == false &&
+        toilet == false &&
+        note == '' &&
+        photos.isEmpty) {
+      diaryBox.delete(date);
+      Navigator.of(context).pop();
+      return;
+    }
+    final Diary newDiary = Diary(
+      date: date,
+      feel: feel,
+      dryFood: dryFood,
+      wetFood: wetFood,
+      water: water,
+      waterySnack: waterySnack,
+      drySnack: drySnack,
+      otherSnack: otherSnack,
+      snack: snack,
+      pee: pee,
+      poo: poo,
+      hairBall: hairBall,
+      diarrhea: diarrhea,
+      vomit: vomit,
+      destroy: destroy,
+      vet: vet,
+      vaccine: vaccine,
+      pill: pill,
+      eyeDrop: eyeDrop,
+      hunting: hunting,
+      brushTeeth: brushTeeth,
+      brushFur: brushFur,
+      clawCut: clawCut,
+      bath: bath,
+      toilet: toilet,
+      note: noteCtrl.text,
+      photos: photos,
+    );
+    await diaryBox.put(date, newDiary);
+
+    if (mounted) Navigator.of(context).pop();
+  }
+
   @override
   Widget build(BuildContext context) {
     final Map<String, dynamic> info =
         ModalRoute.of(context)!.settings.arguments as Map<String, dynamic>;
+    _updateInfo(info);
     return Scaffold(
       appBar: AppBar(
         title: Text('${date} ${info['master']} ${Lang.diary}'),
         elevation: 0,
       ),
       floatingActionButton: ElevatedButton(
-        onPressed: () {},
+        onPressed: _saveDiary,
         child: const Text(Lang.save),
       ),
       body: GestureDetector(
@@ -302,6 +413,8 @@ class _DiaryEditState extends State<DiaryEdit> {
               ),
               DiaryLabel(
                   '${Lang.proof} ${photos.isNotEmpty ? "(${photos.length})" : ""}'),
+              InputImg(_addPhoto),
+              ImgPreviews(photos: photos, removePic: _removePhoto),
             ],
           ),
         ),
