@@ -1,5 +1,9 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_email_sender/flutter_email_sender.dart';
+import 'package:image_picker/image_picker.dart';
+import 'package:path_provider/path_provider.dart' as syspaths;
 import '../core/core.dart';
 
 String ageCalc(DateTime birth) {
@@ -51,4 +55,18 @@ void sendEmail(context) async {
           );
         });
   }
+}
+
+Future<String?> fetchPhoto(bool forPic) async {
+  XFile? image;
+  image = await ImagePicker().pickImage(
+    source: forPic ? ImageSource.camera : ImageSource.gallery,
+    maxWidth: 600,
+  );
+
+  if (image == null) return null;
+  final appDir = await syspaths.getApplicationDocumentsDirectory();
+  final savedImg =
+      await File(image.path).copy('${appDir.path}/${DateTime.now().title()}');
+  return savedImg.path;
 }
