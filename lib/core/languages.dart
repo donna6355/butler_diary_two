@@ -5,6 +5,7 @@ class Lang {
   static const String butlerDiary = '집사일기';
   static const String cancel = '취소';
   static const String confirm = '확인';
+  static const String edit = '수정하기';
 
   static const String obtainCat = '냥줍';
   static const String beMyButler = '너 오늘부터 내 집사해라옹!';
@@ -48,6 +49,14 @@ class Lang {
   static const String observe = '이 몸을 관찰하고 기록해라옹!';
   static const String writeDiary = '일기 쓰기';
 
+  static const String feel = '컨디션';
+  static const String eat = '드신것';
+  static const String out = '싸신것';
+  static const String watchOut = '주의!!';
+  static const String feelBad = '아프냥';
+  static const String pretty = '이쁘냥';
+  static const String healty = '건강냥';
+  static const String evidence = '증거물';
   static const String condition = '주인님 컨디션';
   static const String indifferent = '뭘보냥';
   static const String bad = '나쁘냥';
@@ -86,7 +95,7 @@ class Lang {
   static const String hairBall = '헤어볼';
   static const String diarrhea = '설사';
   static const String puke = '토켁켁';
-  static const String destory = '파괴왕';
+  static const String destroy = '파괴왕';
   static const String sick = '나 아픈거냐옹?';
   static const String vet = '동물병원';
   static const String vaccine = '예방접종';
@@ -102,6 +111,8 @@ class Lang {
   static const String comment = '눈물의 집사 일기';
   static const String commentHint = 'ex) 충전기 씹어드심ㅠ';
   static const String proof = '증거 사진';
+  static const String fetchImg = '사진 가져오기';
+  static const String takePic = '사진 찍기';
 
   static const String devMsg = '개발자 메시지';
   static const String freeToDev = '자유롭게 개발자에게 하고 싶은 말을 적어주면 된다옹:)';

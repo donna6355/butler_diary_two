@@ -112,7 +112,7 @@ class _DiaryEditState extends State<DiaryEdit> {
         case Lang.puke:
           vomit = !vomit;
           break;
-        case Lang.destory:
+        case Lang.destroy:
           destroy = !destroy;
           break;
         case Lang.vet:
@@ -267,11 +267,16 @@ class _DiaryEditState extends State<DiaryEdit> {
     _updateInfo(info);
     return Scaffold(
       appBar: AppBar(
-        title: Text('${date} ${info['master']} ${Lang.diary}'),
+        title: Text(
+            '${date.isEmpty ? '' : date.intoYmd()} ${info['master']} ${Lang.diary}'),
         elevation: 0,
       ),
       floatingActionButton: ElevatedButton(
         onPressed: _saveDiary,
+        style: ButtonStyle(
+          backgroundColor:
+              dirty ? null : MaterialStateProperty.all(CommonStyle.secondGray),
+        ),
         child: const Text(Lang.save),
       ),
       body: GestureDetector(
@@ -356,7 +361,7 @@ class _DiaryEditState extends State<DiaryEdit> {
                 label1: Lang.hairBall,
                 label2: Lang.diarrhea,
                 label3: Lang.puke,
-                label4: Lang.destory,
+                label4: Lang.destroy,
                 choiceVal1: hairBall,
                 choiceVal2: diarrhea,
                 choiceVal3: vomit,

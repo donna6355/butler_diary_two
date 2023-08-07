@@ -1,3 +1,5 @@
+import 'languages.dart';
+
 class NamedRoutes {
   NamedRoutes._();
   static const String home = '/';
@@ -56,3 +58,30 @@ const List<String> commonSense = [
   "나는 1살이 되면 으른이다옹!",
   "나의 평균 수명은 15~20년이다옹!",
 ];
+
+const Map<String, String> fileName = {
+  Lang.indifferent: 'feel',
+  Lang.wetN: 'wetf',
+  Lang.dryN: 'dryf',
+  Lang.waterN: 'water',
+  Lang.pooN: 'poo',
+  Lang.peeN: 'pee',
+  Lang.paste: 'chew',
+  Lang.treat: 'treat',
+  Lang.can: 'can',
+  Lang.etc: 'other',
+  Lang.hairBall: 'hair',
+  Lang.diarrhea: 'diar',
+  Lang.puke: 'puke',
+  Lang.destroy: 'dest',
+  Lang.vet: 'vet',
+  Lang.vaccine: 'vac',
+  Lang.pill: 'pill',
+  Lang.eyedrop: 'eye',
+  Lang.hunt: 'hunt',
+  Lang.tooth: 'teeth',
+  Lang.brush: 'fur',
+  Lang.bath: 'bath',
+  Lang.claw: 'claw',
+  Lang.clean: 'toilet',
+};

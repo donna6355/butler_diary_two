@@ -1,33 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../core/core.dart';
 
-const Map<String, String> fileName = {
-  Lang.indifferent: 'feel',
-  Lang.wetN: 'wetf',
-  Lang.dryN: 'dryf',
-  Lang.waterN: 'water',
-  Lang.pooN: 'poo',
-  Lang.peeN: 'pee',
-  Lang.paste: 'chew',
-  Lang.treat: 'treat',
-  Lang.can: 'can',
-  Lang.etc: 'other',
-  Lang.hairBall: 'hair',
-  Lang.diarrhea: 'diar',
-  Lang.puke: 'puke',
-  Lang.destory: 'dest',
-  Lang.vet: 'vet',
-  Lang.vaccine: 'vac',
-  Lang.pill: 'pill',
-  Lang.eyedrop: 'eye',
-  Lang.hunt: 'hunt',
-  Lang.tooth: 'teeth',
-  Lang.brush: 'fur',
-  Lang.bath: 'bath',
-  Lang.claw: 'claw',
-  Lang.clean: 'toilet',
-};
-
 class ImgLabel extends StatelessWidget {
   const ImgLabel({
     required this.label,

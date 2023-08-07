@@ -8,3 +8,4 @@ export 'multiple_choice.dart';
 export 'calendar_components.dart';
 export 'diary_components.dart';
 export 'toggle_choice.dart';
+export 'multi_diary_icon.dart';

@@ -61,10 +61,13 @@ class Calendar extends StatelessWidget {
           calendarBuilders: CalendarBuilders(
             markerBuilder: (_, date, events) {
               return events.isNotEmpty
-                  ? Image.asset(
-                      Provider.of<CalendarDate>(context).checkDate(date)
-                          ? Img.iconGrayDone
-                          : Img.iconDone,
+                  ? Opacity(
+                      opacity: 0.5,
+                      child: Image.asset(
+                        Provider.of<CalendarDate>(context).checkDate(date)
+                            ? Img.iconGrayDone
+                            : Img.iconDone,
+                      ),
                     )
                   : null;
             },
@@ -86,6 +89,7 @@ class Calendar extends StatelessWidget {
           CalendarDiaryCard(
             masterId: masterId,
             masterName: masterName,
+            dailyData: _getEventsForDay(selected)[0],
           ),
       ],
     );
