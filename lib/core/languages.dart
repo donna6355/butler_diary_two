@@ -11,12 +11,13 @@ class Lang {
   static const String obtainCat = '냥줍';
   static const String beMyButler = '너 오늘부터 내 집사해라옹!';
   static const String writeProfile = '주인님 프로필 작성하기';
-  static const String notiSet = ' 주인님 알림 추가';
+  static const String notiSet = ' 주인님 알림';
   static const String notiTime = '알림 일정';
   static const String notiMemo = '알림 메모';
   static const String notiEx = '약 먹기';
   static const String notiGuide =
       '* 알림 일정과 메모를 입력하라옹\n* 1년 이내의 알림만 설정 가능하다옹\n* 어플 노티피케이션을 허용해달라옹';
+  static const String notiDeleteGuide = '* 알림 수정하려면 삭제 후 다시 설정해라옹';
 
   static const String editProfile = '주인님 프로필 수정하기';
   static const String noCat = '나만 고양이 없어....\n주인님이 입양이 시급합니다.';

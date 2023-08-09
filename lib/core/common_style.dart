@@ -92,4 +92,15 @@ class CommonStyle {
       TextStyle(fontSize: 18, fontFamily: GoogleFonts.gamjaFlower().fontFamily),
     ),
   );
+
+  static calendarTheme(Widget child, BuildContext context) {
+    return Theme(
+      data: Theme.of(context).copyWith(
+        colorScheme: Theme.of(context).colorScheme.copyWith(
+              primary: primaryGray,
+            ),
+      ),
+      child: child,
+    );
+  }
 }

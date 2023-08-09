@@ -1,15 +1,13 @@
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
-import '../core/core.dart';
 import 'package:timezone/timezone.dart' as tz;
+import '../core/core.dart';
+import '../data/model/notification.dart';
 
 class NotiHelper {
   NotiHelper._();
 
-  static Future<void> setNoti({
-    required DateTime date,
-    required String title,
-  }) async {
-    final remaining = date.difference(DateTime.now()).inMinutes;
+  static Future<void> setNoti(NotiInfo noti) async {
+    final remaining = noti.notiMoment.difference(DateTime.now()).inMinutes;
     const NotificationDetails platformChannelSpecifics = NotificationDetails(
       android: AndroidNotificationDetails(
         Constants.notiId,
@@ -21,8 +19,8 @@ class NotiHelper {
       ),
     );
     FlutterLocalNotificationsPlugin().zonedSchedule(
-      date.notiId(),
-      title,
+      noti.notiMoment.notiId(),
+      '${noti.master} ${noti.memo}',
       Lang.meow,
       tz.TZDateTime.now(tz.local).add(Duration(minutes: remaining)),
       platformChannelSpecifics,
