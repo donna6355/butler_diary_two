@@ -23,6 +23,7 @@ class Img {
   static const String observe = 'assets/img/adorable.png';
   static const String iconGrayDone = 'assets/icon/graydone.png';
   static const String iconDone = 'assets/icon/done.png';
+  static const String swipe = 'assets/img/swipe.png';
 }
 
 const List<String> commonSense = [

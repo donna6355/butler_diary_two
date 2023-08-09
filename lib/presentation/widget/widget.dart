@@ -9,6 +9,7 @@ export 'calendar_components.dart';
 export 'diary_card.dart';
 export 'diary_components.dart';
 export 'diary_photo_components.dart';
+export 'photo_carousel.dart';
 export 'multiple_choice.dart';
 export 'toggle_choice.dart';
 export 'multi_diary_icon.dart';
