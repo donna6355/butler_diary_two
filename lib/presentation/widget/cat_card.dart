@@ -1,9 +1,10 @@
 import 'dart:math';
 
-import 'package:butler_diary_two/core/core.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import 'widget.dart';
+import '../../core/core.dart';
 import '../../data/model/profile.dart';
 import '../../logic/calendar_date.dart';
 
@@ -49,11 +50,17 @@ class CatCardHorizontal extends StatelessWidget {
       children: [
         Padding(
           padding: const EdgeInsets.only(right: 8),
-          child: Center(
-              child: Image.asset(
-            'assets/img/${profile.photo}${Random().nextInt(5)}.png',
-            width: MediaQuery.of(context).size.width / 2,
-          )),
+          child: GestureDetector(
+            onTap: () {
+              showDialog(
+                  context: context, builder: (_) => NotiSetDialog(profile));
+            },
+            child: Center(
+                child: Image.asset(
+              'assets/img/${profile.photo}${Random().nextInt(5)}.png',
+              width: MediaQuery.of(context).size.width / 2,
+            )),
+          ),
         ),
         CatCardCommon(profile, false),
       ],
