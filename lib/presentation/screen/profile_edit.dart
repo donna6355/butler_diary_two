@@ -63,7 +63,6 @@ class _ProfileEditState extends State<ProfileEdit> {
   }
 
   Future<void> _saveProfile() async {
-    //TODO separate logic
     if (_nameCont.text.isEmpty) {
       ScaffoldMessenger.of(context)
           .showSnackBar(const SnackBar(content: Text(Lang.nameAlert)));
@@ -112,7 +111,7 @@ class _ProfileEditState extends State<ProfileEdit> {
           child: ListView(
             physics: const BouncingScrollPhysics(),
             children: [
-              Photo(photo: _photo),
+              Character(photo: _photo),
               const SizedBox(height: 10),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,

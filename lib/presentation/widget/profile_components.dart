@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import '../../core/core.dart';
 
-class Photo extends StatelessWidget {
-  const Photo({required this.photo, super.key});
+class Character extends StatelessWidget {
+  const Character({required this.photo, super.key});
   final String photo;
   @override
   Widget build(BuildContext context) {

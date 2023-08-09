@@ -7,8 +7,8 @@ import 'package:provider/provider.dart';
 import '../../data/model/profile.dart';
 import '../../logic/calendar_date.dart';
 
-class CatCard extends StatelessWidget {
-  const CatCard({required this.profile, required this.vertical, super.key});
+class CatCards extends StatelessWidget {
+  const CatCards({required this.profile, required this.vertical, super.key});
   final Profile profile;
   final bool vertical;
 

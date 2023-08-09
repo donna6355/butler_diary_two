@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-import '../../data/model/profile.dart';
 import '../widget/widget.dart';
 import '../../core/core.dart';
+import '../../data/model/profile.dart';
 
 class LivingRoom extends StatelessWidget {
   const LivingRoom({super.key});
@@ -37,7 +37,7 @@ class LivingRoom extends StatelessWidget {
                           itemCount: box.length,
                           itemBuilder: (BuildContext ctx, idx) {
                             final Profile profile = box.getAt(idx);
-                            return CatCard(
+                            return CatCards(
                               profile: profile,
                               vertical: box.length < 2 ? true : false,
                             );

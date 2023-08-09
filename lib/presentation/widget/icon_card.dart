@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import '../../core/core.dart';
 
-class ImgLabel extends StatelessWidget {
-  const ImgLabel({
+class IconCard extends StatelessWidget {
+  const IconCard({
     required this.label,
     required this.choice,
     this.choiceVal,

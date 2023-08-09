@@ -1,5 +1,6 @@
-import 'package:butler_diary_two/presentation/widget/img_label.dart';
 import 'package:flutter/material.dart';
+
+import 'widget.dart';
 
 class ToggleChoice extends StatelessWidget {
   const ToggleChoice({
@@ -16,7 +17,7 @@ class ToggleChoice extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () => toggleState(choice),
-      child: ImgLabel(
+      child: IconCard(
         label: choice,
         choice: choice,
         selectVal: choiceVal,
