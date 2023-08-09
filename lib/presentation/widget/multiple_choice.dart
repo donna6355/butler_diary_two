@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-
-import 'img_label.dart';
+import 'widget.dart';
 
 class MultipleChoice extends StatelessWidget {
   const MultipleChoice({
@@ -31,7 +30,7 @@ class MultipleChoice extends StatelessWidget {
         children: [
           GestureDetector(
             onTap: () => valueState(choice1, 0.0),
-            child: ImgLabel(
+            child: IconCard(
               label: choice1,
               choice: choice1,
               choiceVal: choiceVal,
@@ -40,7 +39,7 @@ class MultipleChoice extends StatelessWidget {
           ),
           GestureDetector(
             onTap: () => valueState(choice1, 1.0),
-            child: ImgLabel(
+            child: IconCard(
               label: choice1,
               choice: choice2,
               choiceVal: choiceVal,
@@ -49,7 +48,7 @@ class MultipleChoice extends StatelessWidget {
           ),
           GestureDetector(
             onTap: () => valueState(choice1, 2.0),
-            child: ImgLabel(
+            child: IconCard(
               label: choice1,
               choice: choice3,
               choiceVal: choiceVal,
@@ -58,7 +57,7 @@ class MultipleChoice extends StatelessWidget {
           ),
           GestureDetector(
             onTap: () => valueState(choice1, 3.0),
-            child: ImgLabel(
+            child: IconCard(
               label: choice1,
               choice: choice4,
               choiceVal: choiceVal,

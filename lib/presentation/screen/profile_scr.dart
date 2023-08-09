@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 
+import '../widget/widget.dart';
 import '../../core/core.dart';
 import '../../data/model/profile.dart';
 import '../../data/hive_storage.dart';
-import '../widget/drawer_components.dart';
-import '../widget/profile_components.dart';
 
 class ProfileScr extends StatefulWidget {
   const ProfileScr({super.key});
@@ -96,7 +95,7 @@ class _ProfileScrState extends State<ProfileScr> {
           child: ListView(
             physics: const BouncingScrollPhysics(),
             children: [
-              Photo(photo: _photo),
+              Character(photo: _photo),
               const SizedBox(height: 10),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,

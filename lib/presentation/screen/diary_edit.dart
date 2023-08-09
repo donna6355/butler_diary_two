@@ -418,8 +418,8 @@ class _DiaryEditState extends State<DiaryEdit> {
               ),
               DiaryLabel(
                   '${Lang.proof} ${photos.isNotEmpty ? "(${photos.length})" : ""}'),
-              InputImg(_addPhoto),
-              ImgPreviews(photos: photos, removePic: _removePhoto),
+              InputPhoto(_addPhoto),
+              PhotoPreviews(photos: photos, removePic: _removePhoto),
             ],
           ),
         ),
