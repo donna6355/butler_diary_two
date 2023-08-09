@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
 
 import 'core/core.dart';
 import 'data/hive_storage.dart';
@@ -9,6 +10,7 @@ import 'presentation/screen/screen.dart';
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await HiveStore.initHive();
+  MobileAds.instance.initialize();
   runApp(
     ChangeNotifierProvider(
       create: (context) => CalendarDate(),

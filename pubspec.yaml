@@ -18,6 +18,7 @@ dependencies:
   provider: ^6.0.5
   flutter_email_sender: ^6.0.1
   carousel_slider: ^4.2.1
+  google_mobile_ads: ^3.0.0
 
 dev_dependencies:
   flutter_test:
