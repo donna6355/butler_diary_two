@@ -57,7 +57,13 @@ class Calendar extends StatelessWidget {
           ),
           daysOfWeekHeight: 20,
           headerStyle: const HeaderStyle(
-              titleCentered: true, formatButtonVisible: false),
+            titleCentered: true,
+            formatButtonVisible: false,
+            leftChevronIcon:
+                Icon(Icons.chevron_left, color: CommonStyle.primaryGray),
+            rightChevronIcon:
+                Icon(Icons.chevron_right, color: CommonStyle.primaryGray),
+          ),
           calendarBuilders: CalendarBuilders(
             markerBuilder: (_, date, events) {
               return events.isNotEmpty
