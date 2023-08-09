@@ -1,5 +1,6 @@
-import 'package:flutter/material.dart';
 import 'dart:io';
+
+import 'package:flutter/material.dart';
 
 import '../../core/core.dart';
 import '../../data/model/diary.dart';
@@ -316,21 +317,13 @@ class DiaryCard extends StatelessWidget {
                   for (var path in dailyData.photos)
                     GestureDetector(
                       onTap: () {
-                        //TODO image carousel
-                        // showDialog(
-                        //     context: context,
-                        //     builder: (_) {
-                        //       return Dialog(
-                        //         shape: RoundedRectangleBorder(
-                        //           borderRadius: BorderRadius.circular(20),
-                        //         ),
-                        //         child: ClipRRect(
-                        //           borderRadius: BorderRadius.circular(20.0),
-                        //           child: Image.file(File(path),
-                        //               fit: BoxFit.cover, width: 250),
-                        //         ),
-                        //       );
-                        //     });
+                        showDialog(
+                          context: context,
+                          builder: (_) => PhotoCarousel(
+                            photos: dailyData.photos,
+                            idx: dailyData.photos.indexOf(path),
+                          ),
+                        );
                       },
                       child: Padding(
                         padding: const EdgeInsets.only(right: 10),
