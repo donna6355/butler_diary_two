@@ -46,29 +46,7 @@ class LivingRoom extends StatelessWidget {
                   );
                 }),
           ),
-          //TODO add google ad
-          // FutureBuilder(
-          //   future: myBanner.load(),
-          //   builder: (context, snapshot) {
-          //     if (snapshot.connectionState == ConnectionState.waiting) {
-          //       return CircularProgressIndicator();
-          //     }
-          //     final AdWidget adWidget = AdWidget(ad: myBanner);
-          //     final Container adContainer = Container(
-          //       alignment: Alignment.center,
-          //       child: adWidget,
-          //       width: myBanner.size.width.toDouble(),
-          //       height: myBanner.size.height.toDouble(),
-          //       decoration: BoxDecoration(
-          //         image: DecorationImage(
-          //           image: AssetImage("assets/img/darkad.png"),
-          //           fit: BoxFit.cover,
-          //         ),
-          //       ),
-          //     );
-          //     return adContainer;
-          //   },
-          // ),
+          AdBanner(),
         ],
       ),
     );
