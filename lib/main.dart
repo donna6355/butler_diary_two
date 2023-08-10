@@ -5,7 +5,7 @@ import 'package:timezone/data/latest_all.dart' as tz;
 
 import 'core/core.dart';
 import 'data/hive_storage.dart';
-import 'logic/calendar_date.dart';
+import 'logic/logic.dart';
 import 'presentation/screen/screen.dart';
 
 Future<void> main() async {

@@ -7,6 +7,7 @@ class Lang {
   static const String confirm = '확인';
   static const String edit = '수정하기';
   static const String meow = '왥옹 윩얅웅 읽앇';
+  static const String master = '주인님';
 
   static const String obtainCat = '냥줍';
   static const String beMyButler = '너 오늘부터 내 집사해라옹!';
@@ -15,6 +16,8 @@ class Lang {
   static const String notiTime = '알림 일정';
   static const String notiMemo = '알림 메모';
   static const String notiEx = '약 먹기';
+  static const String hour = '시';
+  static const String minute = '분';
   static const String notiGuide =
       '* 알림 일정과 메모를 입력하라옹\n* 1년 이내의 알림만 설정 가능하다옹\n* 어플 노티피케이션을 허용해달라옹';
   static const String notiDeleteGuide = '* 알림 수정하려면 삭제 후 다시 설정해라옹';

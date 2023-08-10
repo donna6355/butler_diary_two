@@ -17,7 +17,15 @@ class HiveStore {
     Hive.registerAdapter(NotiInfoAdapter());
     _catBox = await Hive.openBox(Constants.profile);
     _notiBox = await Hive.openBox(Constants.notification);
-    //TODO delete stale noti
+    _deleteStaleNotis();
+  }
+
+  static Future<void> _deleteStaleNotis() async {
+    for (var noti in _notiBox.values) {
+      if (DateTime.now()
+          .add(const Duration(minutes: 1))
+          .isAfter(noti.notiMoment)) await _notiBox.delete(noti.key);
+    }
   }
 
   static bool checkMasterName(String name) {
@@ -43,7 +51,6 @@ class HiveStore {
   }
 
   static Future deleteCatNoti(String id) async {
-    //once noti is done, it has to be deleted
     await _notiBox.delete(id);
   }
 }

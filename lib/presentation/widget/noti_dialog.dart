@@ -30,116 +30,122 @@ class _NotiSetDialogState extends State<NotiSetDialog> {
   @override
   Widget build(BuildContext context) {
     return Dialog(
-      child: Padding(
-        padding: const EdgeInsets.all(20),
-        child: SizedBox(
-          height: 300,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Center(
-                child: Text(
-                  '${widget.profile.name}${Lang.notiSet}',
-                  style: CommonStyle.diaryFont,
+      child: GestureDetector(
+        onTap: FocusScope.of(context).unfocus,
+        child: Padding(
+          padding: const EdgeInsets.all(20),
+          child: SizedBox(
+            height: 300,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Center(
+                  child: Text(
+                    '${widget.profile.name}${Lang.notiSet}',
+                    style: CommonStyle.diaryFont,
+                  ),
                 ),
-              ),
-              const SizedBox(height: 16),
-              Row(
-                children: [
-                  const Text(Lang.notiTime, style: CommonStyle.labelFont),
-                  const SizedBox(width: 20),
-                  GestureDetector(
-                    onTap: () async {
-                      final DateTime? selectedDate = await showDatePicker(
-                        context: context,
-                        helpText: Lang.notiSet,
-                        cancelText: Lang.cancel,
-                        confirmText: Lang.confirm,
-                        initialDate: _dateNTime!,
-                        firstDate: DateTime.now(),
-                        lastDate: _dateNTime!.add(const Duration(days: 365)),
-                        builder: (_, child) =>
-                            CommonStyle.calendarTheme(child!, context),
-                      );
-                      if (selectedDate == null) return;
-
-                      if (!mounted) return;
-                      final TimeOfDay? selectedTime = await showTimePicker(
-                        context: context,
-                        helpText: Lang.notiSet,
-                        cancelText: Lang.cancel,
-                        confirmText: Lang.confirm,
-                        hourLabelText: '',
-                        minuteLabelText: '',
-                        initialTime: TimeOfDay.now(),
-                        initialEntryMode: TimePickerEntryMode.inputOnly,
-                      );
-                      if (selectedTime == null) return;
-                      setState(() {
-                        _dateNTime = DateTime(
-                          selectedDate.year,
-                          selectedDate.month,
-                          selectedDate.day,
-                          selectedTime.hour,
-                          selectedTime.minute,
+                const SizedBox(height: 16),
+                Row(
+                  children: [
+                    const Text(Lang.notiTime, style: CommonStyle.labelFont),
+                    const SizedBox(width: 20),
+                    GestureDetector(
+                      onTap: () async {
+                        final DateTime? selectedDate = await showDatePicker(
+                          context: context,
+                          helpText: Lang.notiSet,
+                          cancelText: Lang.cancel,
+                          confirmText: Lang.confirm,
+                          initialDate: _dateNTime!,
+                          firstDate: DateTime.now(),
+                          lastDate: _dateNTime!.add(const Duration(days: 365)),
+                          builder: (_, child) =>
+                              CommonStyle.calendarTheme(child!, context),
                         );
-                      });
-                    },
-                    child: Row(
-                      children: [
-                        Text(_dateNTime!.alarm(), style: CommonStyle.labelFont),
-                        const SizedBox(width: 4),
-                        const Icon(Icons.alarm),
-                      ],
+                        if (selectedDate == null) return;
+
+                        if (!mounted) return;
+                        final TimeOfDay? selectedTime = await showTimePicker(
+                          context: context,
+                          helpText: Lang.notiSet,
+                          cancelText: Lang.cancel,
+                          confirmText: Lang.confirm,
+                          hourLabelText: Lang.hour,
+                          minuteLabelText: Lang.minute,
+                          initialTime: TimeOfDay.now(),
+                          initialEntryMode: TimePickerEntryMode.inputOnly,
+                          builder: (_, child) =>
+                              CommonStyle.calendarTheme(child!, context),
+                        );
+                        if (selectedTime == null) return;
+                        setState(() {
+                          _dateNTime = DateTime(
+                            selectedDate.year,
+                            selectedDate.month,
+                            selectedDate.day,
+                            selectedTime.hour,
+                            selectedTime.minute,
+                          );
+                        });
+                      },
+                      child: Row(
+                        children: [
+                          Text(_dateNTime!.alarm(),
+                              style: CommonStyle.labelFont),
+                          const SizedBox(width: 4),
+                          const Icon(Icons.alarm),
+                        ],
+                      ),
                     ),
-                  ),
-                ],
-              ),
-              const SizedBox(height: 16),
-              const Text(Lang.notiMemo, style: CommonStyle.labelFont),
-              TextField(
-                cursorColor: CommonStyle.primaryGray,
-                controller: _remarkCont,
-                maxLength: 15,
-                textAlign: TextAlign.center,
-                decoration: CommonStyle.underlineInput(Lang.notiEx),
-                onChanged: (_) => setState(() {
-                  _dirty = true;
-                }),
-              ),
-              const Padding(
-                padding: EdgeInsets.all(12),
-                child: Text(Lang.notiGuide, style: CommonStyle.guideFont),
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  TextButton(
-                    onPressed: () => Navigator.of(context).pop(),
-                    child: const Text(
-                      Lang.cancel,
-                      style: TextStyle(color: CommonStyle.secondGray),
+                  ],
+                ),
+                const SizedBox(height: 16),
+                const Text(Lang.notiMemo, style: CommonStyle.labelFont),
+                TextField(
+                  cursorColor: CommonStyle.primaryGray,
+                  controller: _remarkCont,
+                  maxLength: 15,
+                  textAlign: TextAlign.center,
+                  decoration: CommonStyle.underlineInput(Lang.notiEx),
+                  onChanged: (_) => setState(() {
+                    _dirty = true;
+                  }),
+                ),
+                const Padding(
+                  padding: EdgeInsets.all(12),
+                  child: Text(Lang.notiGuide, style: CommonStyle.guideFont),
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    TextButton(
+                      onPressed: () => Navigator.of(context).pop(),
+                      child: const Text(
+                        Lang.cancel,
+                        style: TextStyle(color: CommonStyle.secondGray),
+                      ),
                     ),
-                  ),
-                  TextButton(
-                    onPressed: () async {
-                      if (!_dirty || DateTime.now().isAfter(_dateNTime!)) {
-                        return;
-                      }
-                      final NotiInfo noti = NotiInfo(
-                          master: widget.profile.name,
-                          notiMoment: _dateNTime!,
-                          memo: _remarkCont.text);
-                      await NotiHelper.setNoti(noti);
-                      await HiveStore.saveCatNoti(widget.profile.id, noti);
-                      if (mounted) Navigator.of(context).pop();
-                    },
-                    child: const Text(Lang.confirm),
-                  ),
-                ],
-              )
-            ],
+                    TextButton(
+                      onPressed: () async {
+                        if (!_dirty || DateTime.now().isAfter(_dateNTime!)) {
+                          return;
+                        }
+                        final NotiInfo noti = NotiInfo(
+                            master: widget.profile.name,
+                            notiMoment: _dateNTime!,
+                            memo: _remarkCont.text);
+                        await NotiHelper.setNoti(noti);
+                        await HiveStore.saveCatNoti(widget.profile.id, noti);
+                        if (mounted) Navigator.of(context).pop();
+                      },
+                      child: const Text(Lang.confirm),
+                    ),
+                  ],
+                )
+              ],
+            ),
           ),
         ),
       ),

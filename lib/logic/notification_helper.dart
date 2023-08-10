@@ -7,7 +7,7 @@ class NotiHelper {
   NotiHelper._();
 
   static Future<void> setNoti(NotiInfo noti) async {
-    final remaining = noti.notiMoment.difference(DateTime.now()).inMinutes;
+    final remaining = noti.notiMoment.difference(DateTime.now()).inMinutes + 1;
     const NotificationDetails platformChannelSpecifics = NotificationDetails(
       android: AndroidNotificationDetails(
         Constants.notiId,
@@ -20,7 +20,7 @@ class NotiHelper {
     );
     FlutterLocalNotificationsPlugin().zonedSchedule(
       noti.notiMoment.notiId(),
-      '${noti.master} ${noti.memo}',
+      '${noti.master} ${Lang.master} ${noti.memo}',
       Lang.meow,
       tz.TZDateTime.now(tz.local).add(Duration(minutes: remaining)),
       platformChannelSpecifics,
