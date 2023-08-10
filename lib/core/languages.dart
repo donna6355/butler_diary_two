@@ -15,7 +15,7 @@ class Lang {
   static const String notiSet = ' 주인님 알림';
   static const String notiTime = '알림 일정';
   static const String notiMemo = '알림 메모';
-  static const String notiEx = '약 먹기';
+  static const String notiEx = 'ex) 약 먹기';
   static const String hour = '시';
   static const String minute = '분';
   static const String notiGuide =
