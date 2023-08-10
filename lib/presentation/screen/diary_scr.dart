@@ -31,7 +31,10 @@ class DiaryScr extends StatelessWidget {
           future: Hive.openBox('diary_${master.id}'),
           builder: (context, snapshot) {
             if (snapshot.connectionState == ConnectionState.waiting) {
-              return const Center(child: CircularProgressIndicator());
+              return const Center(
+                child:
+                    CircularProgressIndicator(color: CommonStyle.primaryGray),
+              );
             }
             return ValueListenableBuilder<Box>(
               valueListenable: Hive.box('diary_${master.id}').listenable(),
