@@ -4,6 +4,7 @@ import 'model/diary.dart';
 import 'model/profile.dart';
 import 'model/notification.dart';
 import '../core/core.dart';
+import '../logic/logic.dart';
 
 class HiveStore {
   HiveStore._();
@@ -43,6 +44,9 @@ class HiveStore {
   static Future deleteCatProfile(String id) async {
     await Hive.deleteBoxFromDisk('diary_$id');
     await _catBox.delete(id);
+    final NotiInfo? noti = _notiBox.get(id);
+    if (noti == null) return;
+    await NotiHelper.deleteNoti(noti.notiMoment.notiId());
     await _notiBox.delete(id);
   }
 
