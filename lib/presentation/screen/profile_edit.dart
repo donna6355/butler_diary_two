@@ -37,24 +37,16 @@ class _ProfileEditState extends State<ProfileEdit> {
   void _showCalendar() {
     FocusScope.of(context).unfocus();
     showDatePicker(
-        context: context,
-        helpText: Lang.pickBirth,
-        cancelText: Lang.cancel,
-        confirmText: Lang.confirm,
-        initialDate: _birth ?? DateTime.now(),
-        firstDate: DateTime(2000),
-        lastDate: DateTime.now(),
-        initialDatePickerMode: DatePickerMode.year,
-        builder: (_, child) {
-          return Theme(
-            data: Theme.of(context).copyWith(
-              colorScheme: Theme.of(context)
-                  .colorScheme
-                  .copyWith(primary: CommonStyle.primaryGray),
-            ),
-            child: child!,
-          );
-        }).then((pickedDate) {
+      context: context,
+      helpText: Lang.pickBirth,
+      cancelText: Lang.cancel,
+      confirmText: Lang.confirm,
+      initialDate: _birth ?? DateTime.now(),
+      firstDate: DateTime(2000),
+      lastDate: DateTime.now(),
+      initialDatePickerMode: DatePickerMode.year,
+      builder: (_, child) => CommonStyle.calendarTheme(child!, context),
+    ).then((pickedDate) {
       if (pickedDate == null) return;
       setState(() {
         _birth = pickedDate;

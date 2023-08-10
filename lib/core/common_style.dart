@@ -25,6 +25,8 @@ class CommonStyle {
     color: primaryGray,
     fontSize: 16,
   );
+  static const TextStyle guideFont =
+      TextStyle(color: secondGray, fontSize: 16, height: 1.5);
 
   static const TextStyle labelFont = TextStyle(
     fontSize: 18,
@@ -90,4 +92,15 @@ class CommonStyle {
       TextStyle(fontSize: 18, fontFamily: GoogleFonts.gamjaFlower().fontFamily),
     ),
   );
+
+  static calendarTheme(Widget child, BuildContext context) {
+    return Theme(
+      data: Theme.of(context).copyWith(
+        colorScheme: Theme.of(context).colorScheme.copyWith(
+              primary: primaryGray,
+            ),
+      ),
+      child: child,
+    );
+  }
 }

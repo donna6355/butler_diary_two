@@ -1,16 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
+import 'package:timezone/data/latest_all.dart' as tz;
 
 import 'core/core.dart';
 import 'data/hive_storage.dart';
-import 'logic/calendar_date.dart';
+import 'logic/logic.dart';
 import 'presentation/screen/screen.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await HiveStore.initHive();
   MobileAds.instance.initialize();
+  tz.initializeTimeZones();
   runApp(
     ChangeNotifierProvider(
       create: (context) => CalendarDate(),

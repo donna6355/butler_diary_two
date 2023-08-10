@@ -12,6 +12,14 @@ extension TimeFormat on DateTime {
   String title() {
     return toString().substring(0, 19);
   }
+
+  String alarm() {
+    return toString().substring(0, 16);
+  }
+
+  int notiId() {
+    return (millisecondsSinceEpoch / 1000).round();
+  }
 }
 
 extension Format on String {

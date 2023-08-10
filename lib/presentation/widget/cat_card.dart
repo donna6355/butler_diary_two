@@ -1,10 +1,13 @@
 import 'dart:math';
 
-import 'package:butler_diary_two/core/core.dart';
 import 'package:flutter/material.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 import 'package:provider/provider.dart';
 
+import 'widget.dart';
+import '../../core/core.dart';
 import '../../data/model/profile.dart';
+import '../../data/model/notification.dart';
 import '../../logic/calendar_date.dart';
 
 class CatCards extends StatelessWidget {
@@ -23,19 +26,58 @@ class CatCards extends StatelessWidget {
         Provider.of<CalendarDate>(context, listen: false).resetFormat();
         Navigator.of(context).pushNamed(NamedRoutes.diary, arguments: profile);
       },
-      child: Container(
-        margin: const EdgeInsets.fromLTRB(20, 10, 20, 20),
-        padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
-        height: vertical ? 340 : 200,
-        alignment: Alignment.center,
-        decoration: BoxDecoration(
-          color: Colors.white,
-          border: Border.all(color: CommonStyle.primaryGray, width: 0.5),
-          borderRadius: const BorderRadius.all(Radius.circular(10)),
-        ),
-        child: vertical ? CatCardVertical(profile) : CatCardHorizontal(profile),
+      child: Stack(
+        children: [
+          Container(
+            margin: const EdgeInsets.fromLTRB(20, 10, 20, 20),
+            padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
+            height: vertical ? 340 : 200,
+            alignment: Alignment.center,
+            decoration: BoxDecoration(
+              color: Colors.white,
+              border: Border.all(color: CommonStyle.primaryGray, width: 0.5),
+              borderRadius: const BorderRadius.all(Radius.circular(10)),
+            ),
+            child: vertical
+                ? CatCardVertical(profile)
+                : CatCardHorizontal(profile),
+          ),
+          CatNotiButton(profile),
+        ],
       ),
     );
+  }
+}
+
+class CatNotiButton extends StatelessWidget {
+  const CatNotiButton(this.profile, {super.key});
+  final Profile profile;
+  @override
+  Widget build(BuildContext context) {
+    return Positioned(
+        left: 24,
+        top: 16,
+        child: ValueListenableBuilder<Box>(
+          valueListenable: Hive.box(Constants.notification).listenable(),
+          builder: (_, box, __) {
+            final NotiInfo? noti = box.get(profile.id);
+            return IconButton(
+              icon: Icon(
+                Icons.notifications_none_outlined,
+                color: noti == null
+                    ? CommonStyle.subGray
+                    : CommonStyle.primaryGray,
+              ),
+              onPressed: () => showDialog(
+                  context: context,
+                  builder: (_) {
+                    return noti == null
+                        ? NotiSetDialog(profile)
+                        : NotiDelDialog(noti, profile);
+                  }),
+            );
+          },
+        ));
   }
 }
 

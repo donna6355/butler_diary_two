@@ -13,6 +13,11 @@ class NamedRoutes {
 class Constants {
   Constants._();
   static const String profile = 'myCats';
+  static const String notification = 'myCatsNoti';
+  static const String notiIcon = 'app_icon';
+  static const String notiId = 'donna6355';
+  static const String notiChannel = 'butler_diary';
+  static const String notiDesc = 'noti for butler diary';
 }
 
 class Img {
