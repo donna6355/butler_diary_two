@@ -12,6 +12,13 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await HiveStore.initHive();
   MobileAds.instance.initialize();
+  MobileAds.instance.updateRequestConfiguration(
+    RequestConfiguration(
+      tagForChildDirectedTreatment: TagForChildDirectedTreatment.yes,
+      tagForUnderAgeOfConsent: TagForUnderAgeOfConsent.yes,
+      maxAdContentRating: MaxAdContentRating.g,
+    ),
+  );
   tz.initializeTimeZones();
   runApp(
     ChangeNotifierProvider(
