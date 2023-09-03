@@ -309,8 +309,8 @@ class DiaryCard extends StatelessWidget {
                 border: Border(top: BorderSide(width: 0.1)),
               ),
               padding: const EdgeInsets.only(top: 10),
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
+              child: Wrap(
+                crossAxisAlignment: WrapCrossAlignment.start,
                 children: <Widget>[
                   const Text(Lang.evidence),
                   const SizedBox(width: 3),
@@ -326,7 +326,7 @@ class DiaryCard extends StatelessWidget {
                         );
                       },
                       child: Padding(
-                        padding: const EdgeInsets.only(right: 10),
+                        padding: const EdgeInsets.only(right: 10, bottom: 10),
                         child: ClipRRect(
                           borderRadius: BorderRadius.circular(8.0),
                           child: Image.file(File(path),
