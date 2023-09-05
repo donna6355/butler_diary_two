@@ -305,6 +305,7 @@ class DiaryCard extends StatelessWidget {
             ),
           if (dailyData.photos.isNotEmpty)
             Container(
+              constraints: const BoxConstraints(minWidth: double.infinity),
               decoration: const BoxDecoration(
                 border: Border(top: BorderSide(width: 0.1)),
               ),

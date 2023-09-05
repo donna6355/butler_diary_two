@@ -40,7 +40,10 @@ class PhotoCarousel extends StatelessWidget {
             ).toList(),
           ),
         ),
-        Image.asset(Img.swipe, width: 250),
+        GestureDetector(
+          onTap: () => Navigator.pop(context),
+          child: Image.asset(Img.swipe, width: 250),
+        ),
       ],
     );
   }
