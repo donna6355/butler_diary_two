@@ -73,6 +73,7 @@ class CommonStyle {
     scaffoldBackgroundColor: subGray,
     textTheme: const TextTheme(bodyMedium: bodyFont),
     iconTheme: const IconThemeData(color: primaryGray),
+    useMaterial3: false,
   );
 
   static ButtonStyle basicBtn = ButtonStyle(
