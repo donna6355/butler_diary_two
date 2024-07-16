@@ -2,7 +2,10 @@
 
 A new Flutter project.
 
-## Getting Started
+## How to backup app
+
+adb backup -apk com.donna6355.butler_diary -f butler_diary.adb
+adb restore butler_diary.adb
 
 This project is a starting point for a Flutter application.
 
