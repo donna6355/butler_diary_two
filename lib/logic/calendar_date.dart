@@ -46,7 +46,9 @@ class CalendarDate extends ChangeNotifier {
   bool checkDate(DateTime date) {
     if (date == _selectedDate) return true;
     if (date.toString().substring(0, 10) ==
-        _selectedDate.toString().substring(0, 10)) return true;
+        _selectedDate.toString().substring(0, 10)) {
+      return true;
+    }
     return false;
   }
 }

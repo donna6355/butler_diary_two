@@ -38,7 +38,7 @@ class PhotoButtons extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextButton.icon(
       style: ButtonStyle(
-        backgroundColor: MaterialStateProperty.all(Colors.white),
+        backgroundColor: WidgetStateProperty.all(Colors.white),
       ),
       icon: Icon(forPic ? Icons.photo_camera : Icons.photo_library_outlined),
       onPressed: () => onPressed(forPic),

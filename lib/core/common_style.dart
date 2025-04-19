@@ -58,14 +58,14 @@ class CommonStyle {
         SnackBarThemeData(contentTextStyle: TextStyle(fontFamily: gamja)),
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ButtonStyle(
-        backgroundColor: MaterialStateProperty.all<Color>(primaryGray),
+        backgroundColor: WidgetStateProperty.all<Color>(primaryGray),
       ),
     ),
     textButtonTheme: TextButtonThemeData(
       style: ButtonStyle(
         overlayColor:
-            MaterialStateProperty.all<Color>(primaryGray.withOpacity(0.3)),
-        foregroundColor: MaterialStateProperty.all<Color>(primaryGray),
+            WidgetStateProperty.all<Color>(primaryGray.withValues(alpha: 0.3)),
+        foregroundColor: WidgetStateProperty.all<Color>(primaryGray),
       ),
     ),
     fontFamily: gamja,
@@ -77,19 +77,19 @@ class CommonStyle {
   );
 
   static ButtonStyle basicBtn = ButtonStyle(
-    backgroundColor: MaterialStateProperty.all<Color>(primaryGray),
-    foregroundColor: MaterialStateProperty.all<Color>(subGray),
-    fixedSize: MaterialStateProperty.all<Size>(const Size(200, 40)),
-    textStyle: MaterialStateProperty.all<TextStyle>(
+    backgroundColor: WidgetStateProperty.all<Color>(primaryGray),
+    foregroundColor: WidgetStateProperty.all<Color>(subGray),
+    fixedSize: WidgetStateProperty.all<Size>(const Size(200, 40)),
+    textStyle: WidgetStateProperty.all<TextStyle>(
       TextStyle(fontSize: 18, fontFamily: GoogleFonts.gamjaFlower().fontFamily),
     ),
   );
 
   static ButtonStyle reverseBtn = ButtonStyle(
-    backgroundColor: MaterialStateProperty.all<Color>(subGray),
-    foregroundColor: MaterialStateProperty.all<Color>(primaryGray),
-    fixedSize: MaterialStateProperty.all<Size>(const Size(200, 40)),
-    textStyle: MaterialStateProperty.all<TextStyle>(
+    backgroundColor: WidgetStateProperty.all<Color>(subGray),
+    foregroundColor: WidgetStateProperty.all<Color>(primaryGray),
+    fixedSize: WidgetStateProperty.all<Size>(const Size(200, 40)),
+    textStyle: WidgetStateProperty.all<TextStyle>(
       TextStyle(fontSize: 18, fontFamily: GoogleFonts.gamjaFlower().fontFamily),
     ),
   );

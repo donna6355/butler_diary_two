@@ -149,7 +149,7 @@ class _ProfileScrState extends State<ProfileScr> {
                     onPressed: _removeProfile,
                     style: ButtonStyle(
                       backgroundColor:
-                          MaterialStateProperty.all(CommonStyle.secondGray),
+                          WidgetStateProperty.all(CommonStyle.secondGray),
                     ),
                     child: const Text(Lang.delete),
                   ),
@@ -160,7 +160,7 @@ class _ProfileScrState extends State<ProfileScr> {
                       style: ButtonStyle(
                         backgroundColor: _dirty
                             ? null
-                            : MaterialStateProperty.all(CommonStyle.secondGray),
+                            : WidgetStateProperty.all(CommonStyle.secondGray),
                       ),
                       child: const Text(Lang.save),
                     ),

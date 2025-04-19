@@ -275,7 +275,7 @@ class _DiaryEditState extends State<DiaryEdit> {
         onPressed: _saveDiary,
         style: ButtonStyle(
           backgroundColor:
-              dirty ? null : MaterialStateProperty.all(CommonStyle.secondGray),
+              dirty ? null : WidgetStateProperty.all(CommonStyle.secondGray),
         ),
         child: const Text(Lang.save),
       ),
