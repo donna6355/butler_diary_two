@@ -19,6 +19,7 @@ class NotiHelper {
       ),
     );
     FlutterLocalNotificationsPlugin().zonedSchedule(
+      androidScheduleMode: AndroidScheduleMode.exact,
       noti.notiMoment.notiId(),
       '${noti.master} ${Lang.master} ${noti.memo}',
       Lang.meow,
