@@ -22,32 +22,34 @@ class LivingRoom extends StatelessWidget {
           ),
         ],
       ),
-      body: Column(
-        children: [
-          Expanded(
-            child: ValueListenableBuilder<Box>(
-                valueListenable: Hive.box(Constants.profile).listenable(),
-                builder: (context, box, widget) {
-                  if (box.length == 0) return const BeMyButler();
-                  return Stack(
-                    children: [
-                      const Background(),
-                      ListView.builder(
-                          physics: const BouncingScrollPhysics(),
-                          itemCount: box.length,
-                          itemBuilder: (BuildContext ctx, idx) {
-                            final Profile profile = box.getAt(idx);
-                            return CatCards(
-                              profile: profile,
-                              vertical: box.length < 2 ? true : false,
-                            );
-                          }),
-                    ],
-                  );
-                }),
-          ),
-          AdBanner(),
-        ],
+      body: SafeArea(
+        child: Column(
+          children: [
+            Expanded(
+              child: ValueListenableBuilder<Box>(
+                  valueListenable: Hive.box(Constants.profile).listenable(),
+                  builder: (context, box, widget) {
+                    if (box.length == 0) return const BeMyButler();
+                    return Stack(
+                      children: [
+                        const Background(),
+                        ListView.builder(
+                            physics: const BouncingScrollPhysics(),
+                            itemCount: box.length,
+                            itemBuilder: (BuildContext ctx, idx) {
+                              final Profile profile = box.getAt(idx);
+                              return CatCards(
+                                profile: profile,
+                                vertical: box.length < 2 ? true : false,
+                              );
+                            }),
+                      ],
+                    );
+                  }),
+            ),
+            AdBanner(),
+          ],
+        ),
       ),
     );
   }

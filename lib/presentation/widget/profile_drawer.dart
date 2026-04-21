@@ -45,11 +45,13 @@ class ProfileDrawer extends StatelessWidget {
                 },
               ),
             ),
-            Center(
-              child: TextButton(
-                onPressed: () =>
-                    Navigator.of(context).pushNamed(NamedRoutes.devMsg),
-                child: const Text(Lang.devMsg),
+            SafeArea(
+              child: Center(
+                child: TextButton(
+                  onPressed: () =>
+                      Navigator.of(context).pushNamed(NamedRoutes.devMsg),
+                  child: const Text(Lang.devMsg),
+                ),
               ),
             ),
           ],
