@@ -187,7 +187,7 @@ class _DiaryEditState extends State<DiaryEdit> {
     });
   }
 
-  void _removePhoto(path) {
+  void _removePhoto(String path) {
     setState(() {
       dirty = true;
       photos.removeWhere((el) => el == path);

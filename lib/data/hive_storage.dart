@@ -25,7 +25,9 @@ class HiveStore {
     for (var noti in _notiBox.values) {
       if (DateTime.now()
           .add(const Duration(minutes: 1))
-          .isAfter(noti.notiMoment)) await _notiBox.delete(noti.key);
+          .isAfter(noti.notiMoment)) {
+        await _notiBox.delete(noti.key);
+      }
     }
   }
 

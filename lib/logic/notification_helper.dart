@@ -6,7 +6,17 @@ import '../data/model/notification.dart';
 class NotiHelper {
   NotiHelper._();
 
+  static void _checckPermission() {
+    FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
+        FlutterLocalNotificationsPlugin();
+    flutterLocalNotificationsPlugin
+        .resolvePlatformSpecificImplementation<
+            AndroidFlutterLocalNotificationsPlugin>()
+        ?.requestNotificationsPermission();
+  }
+
   static Future<void> setNoti(NotiInfo noti) async {
+    _checckPermission();
     final remaining = noti.notiMoment.difference(DateTime.now()).inMinutes + 1;
     const NotificationDetails platformChannelSpecifics = NotificationDetails(
       android: AndroidNotificationDetails(
@@ -19,18 +29,17 @@ class NotiHelper {
       ),
     );
     FlutterLocalNotificationsPlugin().zonedSchedule(
+      id: noti.notiMoment.notiId(),
+      scheduledDate:
+          tz.TZDateTime.now(tz.local).add(Duration(minutes: remaining)),
+      notificationDetails: platformChannelSpecifics,
       androidScheduleMode: AndroidScheduleMode.exact,
-      noti.notiMoment.notiId(),
-      '${noti.master} ${Lang.master} ${noti.memo}',
-      Lang.meow,
-      tz.TZDateTime.now(tz.local).add(Duration(minutes: remaining)),
-      platformChannelSpecifics,
-      uiLocalNotificationDateInterpretation:
-          UILocalNotificationDateInterpretation.absoluteTime,
+      title: '${noti.master} ${Lang.master} ${noti.memo}',
+      body: Lang.meow,
     );
   }
 
   static Future<void> deleteNoti(int id) async {
-    await FlutterLocalNotificationsPlugin().cancel(id);
+    await FlutterLocalNotificationsPlugin().cancel(id: id);
   }
 }

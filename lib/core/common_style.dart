@@ -50,7 +50,7 @@ class CommonStyle {
     datePickerTheme:
         const DatePickerThemeData(headerBackgroundColor: primaryGray),
     appBarTheme: AppBarTheme(
-      color: subGray,
+      backgroundColor: subGray,
       iconTheme: const IconThemeData(color: primaryGray),
       titleTextStyle: basicFont,
     ),
@@ -94,7 +94,7 @@ class CommonStyle {
     ),
   );
 
-  static calendarTheme(Widget child, BuildContext context) {
+  static Theme calendarTheme(Widget child, BuildContext context) {
     return Theme(
       data: Theme.of(context).copyWith(
         colorScheme: Theme.of(context).colorScheme.copyWith(
