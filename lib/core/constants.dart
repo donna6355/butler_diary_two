@@ -27,6 +27,9 @@ class Img {
   static const String devMsg = 'assets/img/msg.png';
   static const String observe = 'assets/img/adorable.png';
   static const String iconGrayDone = 'assets/icon/graydone.png';
+  static const String iconRDone = 'assets/icon/rdone.png';
+  static const String iconYDone = 'assets/icon/ydone.png';
+  static const String iconGDone = 'assets/icon/gdone.png';
   static const String iconDone = 'assets/icon/done.png';
   static const String swipe = 'assets/img/swipe.png';
   static const String adBg = 'assets/img/darkad.png';

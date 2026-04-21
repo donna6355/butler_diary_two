@@ -44,13 +44,14 @@ class DiaryAdapter extends TypeAdapter<Diary> {
       toilet: fields[21] as bool,
       note: fields[22] as String,
       photos: (fields[23] as List).cast<dynamic>(),
+      mark: fields[27] == null ? 0 : fields[27] as double,
     );
   }
 
   @override
   void write(BinaryWriter writer, Diary obj) {
     writer
-      ..writeByte(27)
+      ..writeByte(28)
       ..writeByte(0)
       ..write(obj.date)
       ..writeByte(1)
@@ -104,7 +105,9 @@ class DiaryAdapter extends TypeAdapter<Diary> {
       ..writeByte(25)
       ..write(obj.clawCut)
       ..writeByte(26)
-      ..write(obj.feel);
+      ..write(obj.feel)
+      ..writeByte(27)
+      ..write(obj.mark);
   }
 
   @override

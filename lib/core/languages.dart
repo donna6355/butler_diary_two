@@ -60,6 +60,7 @@ class Lang {
   static const String observe = '이 몸을 관찰하고 기록해라옹!';
   static const String writeDiary = '일기 쓰기';
 
+  static const String mark = "캘린더 마커";
   static const String feel = '컨디션';
   static const String eat = '드신것';
   static const String out = '싸신것';

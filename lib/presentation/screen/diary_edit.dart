@@ -43,6 +43,7 @@ class _DiaryEditState extends State<DiaryEdit> {
   List<dynamic> photos = [];
   late Box diaryBox;
   bool dirty = false;
+  double mark = 0;
 
   void _updateInfo(Map<String, dynamic> master) {
     if (date.isNotEmpty) return;
@@ -80,6 +81,7 @@ class _DiaryEditState extends State<DiaryEdit> {
         toilet = dailyData.toilet;
         note = dailyData.note;
         noteCtrl.text = dailyData.note.isNotEmpty ? dailyData.note : '';
+        mark = dailyData.mark;
         if (dailyData.photos.isNotEmpty) {
           photos = dailyData.photos;
         }
@@ -180,6 +182,13 @@ class _DiaryEditState extends State<DiaryEdit> {
     });
   }
 
+  void _selectColor(double value) {
+    dirty = true;
+    setState(() {
+      mark = value;
+    });
+  }
+
   void _addPhoto(String path) {
     setState(() {
       dirty = true;
@@ -254,6 +263,7 @@ class _DiaryEditState extends State<DiaryEdit> {
       toilet: toilet,
       note: noteCtrl.text,
       photos: photos,
+      mark: mark,
     );
     await diaryBox.put(date, newDiary);
 
@@ -286,6 +296,8 @@ class _DiaryEditState extends State<DiaryEdit> {
           child: ListView(
             physics: const BouncingScrollPhysics(),
             children: [
+              const DiaryLabel(Lang.mark),
+              ColorSelect(_selectColor, mark),
               const DiaryLabel(Lang.condition),
               MultipleChoice(
                 choice1: Lang.indifferent,

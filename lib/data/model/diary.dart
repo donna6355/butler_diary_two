@@ -59,6 +59,8 @@ class Diary extends HiveObject {
   bool clawCut;
   @HiveField(26)
   double feel;
+  @HiveField(27, defaultValue: 0)
+  double mark;
 
   Diary(
       {required this.date,
@@ -87,5 +89,6 @@ class Diary extends HiveObject {
       required this.bath,
       required this.toilet,
       required this.note,
-      required this.photos});
+      required this.photos,
+      required this.mark});
 }

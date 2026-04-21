@@ -16,3 +16,4 @@ export 'multiple_choice.dart';
 export 'toggle_choice.dart';
 export 'multi_diary_icon.dart';
 export 'icon_card.dart';
+export 'color_select.dart';

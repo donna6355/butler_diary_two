@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:table_calendar/table_calendar.dart';
 
+import '../core/constants.dart';
+
 class CalendarDate extends ChangeNotifier {
   DateTime _selectedDate = DateTime.now();
   DateTime _focusedDate = DateTime.now();
@@ -43,12 +45,20 @@ class CalendarDate extends ChangeNotifier {
     notifyListeners();
   }
 
-  bool checkDate(DateTime date) {
-    if (date == _selectedDate) return true;
+  String checkDate(DateTime date, double isMarked) {
+    if (isMarked > 0) return _colorMarkerHelper(isMarked);
+    if (date == _selectedDate) return Img.iconGrayDone;
     if (date.toString().substring(0, 10) ==
         _selectedDate.toString().substring(0, 10)) {
-      return true;
+      return Img.iconGrayDone;
     }
-    return false;
+    return Img.iconDone;
+  }
+
+  String _colorMarkerHelper(double isMarked) {
+    if (isMarked == 1.0) return Img.iconRDone;
+    if (isMarked == 2.0) return Img.iconYDone;
+    if (isMarked == 3.0) return Img.iconGDone;
+    return Img.iconDone;
   }
 }

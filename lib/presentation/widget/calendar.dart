@@ -66,14 +66,13 @@ class Calendar extends StatelessWidget {
                 Icon(Icons.chevron_right, color: CommonStyle.primaryGray),
           ),
           calendarBuilders: CalendarBuilders(
-            markerBuilder: (_, date, events) {
+            markerBuilder: (_, date, List<Diary> events) {
               return events.isNotEmpty
                   ? Opacity(
                       opacity: 0.5,
                       child: Image.asset(
-                        Provider.of<CalendarDate>(context).checkDate(date)
-                            ? Img.iconGrayDone
-                            : Img.iconDone,
+                        Provider.of<CalendarDate>(context)
+                            .checkDate(date, events[0].mark),
                       ),
                     )
                   : null;
