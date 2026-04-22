@@ -29,7 +29,7 @@ class CalendarNewCard extends StatelessWidget {
         child: Column(
           children: [
             Image.asset(Img.observe, width: 150),
-            const Text(Lang.observe, style: TextStyle(fontSize: 18)),
+            const Text(Lang.observe, style: CommonStyle.labelRegFont),
             const SizedBox(height: 10),
             ElevatedButton(
               onPressed: () {

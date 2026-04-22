@@ -8,7 +8,7 @@ class DiaryLabel extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text(label, style: CommonStyle.diaryLabelFont);
+    return Text(label, style: CommonStyle.labelFont);
   }
 }
 

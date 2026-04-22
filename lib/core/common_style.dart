@@ -28,11 +28,9 @@ class CommonStyle {
   static const TextStyle guideFont =
       TextStyle(color: secondGray, fontSize: 16, height: 1.5);
 
+  static const TextStyle labelRegFont = TextStyle(fontSize: 18);
+
   static const TextStyle labelFont = TextStyle(
-    fontSize: 18,
-    fontWeight: FontWeight.w500,
-  );
-  static const TextStyle diaryLabelFont = TextStyle(
     fontSize: 18,
     fontWeight: FontWeight.w500,
   );
@@ -42,6 +40,18 @@ class CommonStyle {
       counterText: '',
       focusedBorder: const UnderlineInputBorder(
         borderSide: BorderSide(color: CommonStyle.primaryGray, width: 2.0),
+      ),
+    );
+  }
+
+  static InputDecoration outlineInput(String hint) {
+    return InputDecoration(
+      hintText: hint,
+      enabledBorder: const OutlineInputBorder(
+        borderSide: BorderSide(color: CommonStyle.primaryGray, width: 1.0),
+      ),
+      focusedBorder: const OutlineInputBorder(
+        borderSide: BorderSide(color: CommonStyle.primaryGray, width: 1.0),
       ),
     );
   }

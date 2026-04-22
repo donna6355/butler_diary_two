@@ -48,8 +48,12 @@ class ColorBtn extends StatelessWidget {
             child: SizedBox(width: 54, height: 54),
           ),
           if (isSelected == value)
-            Icon(Icons.check,
-                color: value > 0 ? Colors.black : Colors.white, size: 30)
+            Icon(
+              Icons.check,
+              color: Colors.white,
+              size: 30,
+              fontWeight: FontWeight.w900,
+            )
         ],
       ),
     );

@@ -13,6 +13,10 @@ class Lang {
   static const String beMyButler = '너 오늘부터 내 집사해라옹!';
   static const String writeProfile = '주인님 프로필 작성하기';
   static const String notiSet = ' 주인님 알림';
+  static const String memoSet = ' 주인님 메모';
+  static const String memoColor = '메모 색깔';
+  static const String memo = '메모 (*최대 200자)';
+  static const String memoHint = 'ex) 주말에 발톱 깎기';
   static const String notiTime = '알림 일정';
   static const String notiMemo = '알림 메모';
   static const String notiEx = 'ex) 약 먹기';
@@ -60,7 +64,7 @@ class Lang {
   static const String observe = '이 몸을 관찰하고 기록해라옹!';
   static const String writeDiary = '일기 쓰기';
 
-  static const String mark = "캘린더 마커";
+  static const String mark = "캘린더 마커 색깔";
   static const String feel = '컨디션';
   static const String eat = '드신것';
   static const String out = '싸신것';

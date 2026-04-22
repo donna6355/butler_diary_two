@@ -128,7 +128,7 @@ class _ProfileScrState extends State<ProfileScr> {
                       decoration: CommonStyle.underlineInput(Lang.weightEx),
                     ),
                   ),
-                  const Text(Lang.kg, style: TextStyle(fontSize: 18)),
+                  const Text(Lang.kg, style: CommonStyle.labelRegFont),
                 ],
               ),
               const SizedBox(height: 10),

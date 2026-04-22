@@ -3,6 +3,7 @@ import 'package:path_provider/path_provider.dart';
 import 'model/diary.dart';
 import 'model/profile.dart';
 import 'model/notification.dart';
+import 'model/memo.dart';
 import '../core/core.dart';
 import '../logic/logic.dart';
 
@@ -10,14 +11,17 @@ class HiveStore {
   HiveStore._();
   static late Box _catBox;
   static late Box _notiBox;
+  static late Box _memoBox;
   static Future<void> initHive() async {
     final appDocDir = await getApplicationDocumentsDirectory();
     await Hive.initFlutter(appDocDir.path);
     Hive.registerAdapter(DiaryAdapter());
     Hive.registerAdapter(ProfileAdapter());
     Hive.registerAdapter(NotiInfoAdapter());
+    Hive.registerAdapter(MemoAdapter());
     _catBox = await Hive.openBox(Constants.profile);
     _notiBox = await Hive.openBox(Constants.notification);
+    _memoBox = await Hive.openBox(Constants.memo);
     _deleteStaleNotis();
   }
 
@@ -58,5 +62,13 @@ class HiveStore {
 
   static Future deleteCatNoti(String id) async {
     await _notiBox.delete(id);
+  }
+
+  static Future saveCatMemo(String id, Memo memo) async {
+    await _memoBox.put(id, memo);
+  }
+
+  static Future deleteCatMemo(String id) async {
+    await _memoBox.delete(id);
   }
 }
