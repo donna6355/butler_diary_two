@@ -230,7 +230,8 @@ class _DiaryEditState extends State<DiaryEdit> {
         bath == false &&
         toilet == false &&
         note == '' &&
-        photos.isEmpty) {
+        photos.isEmpty &&
+        mark == 0) {
       diaryBox.delete(date);
       Navigator.of(context).pop();
       return;
